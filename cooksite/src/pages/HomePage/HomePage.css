@@ -1,0 +1,45 @@
+.home-page {
+    display: flex;
+    height: 100vh;
+    width: 100vw;
+    background-color: black;
+}
+
+.left-half, .right-half {
+    width: 50%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.image-container {
+    position: relative;
+    width: 80%;
+    height: 80%;
+}
+
+.image-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.overlay-button {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: transparent;
+    border: none;
+    font-size: 24px;
+    font-weight: bold;
+    cursor: pointer;
+    color: white;
+    text-shadow: 2px 2px 4px #000000;
+}
+
+
+.hovered img {
+    filter: grayscale(50%);
+}

@@ -1,0 +1,39 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #001f3f;
+    color: white;
+  }
+  
+  .review-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+  }
+  
+  h1 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+  }
+  
+  .stars {
+    display: flex;
+    gap: 10px;
+  }
+  
+  .star {
+    font-size: 2rem;
+    cursor: pointer;
+    color: white;
+  }
+  
+  .star.yellow {
+    color: #ffff99;
+  }
+  
+  .star.golden {
+    color: gold;
+  }
+  
