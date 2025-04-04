@@ -1,0 +1,129 @@
+1:
+
+
+2.0
+cup
+flour
+
+3.0
+teaspoon
+baking powder
+
+0.5
+teaspoon
+salt
+
+0.75
+cup
+white sugar
+
+1.0
+whole
+egg
+
+1.0
+cup
+milk
+
+0.25
+cup
+vegetable oil
+
+
+2:
+
+
+14
+tablespoon
+flour
+
+10
+tablespoon
+cocoa powder
+
+0.5
+teaspoon
+salt
+
+0.75
+teaspoon
+baking powder
+
+0.75
+teaspoon
+baking soda
+
+1.0
+cup
+sugar
+
+1.0
+whole
+egg
+
+0.5
+cup
+milk
+
+0.25
+cup
+coconut oil
+
+2.5
+teaspoon
+vanilla extract
+
+0.5
+cup
+water
+
+0.5
+cup
+unsalted butter
+
+1.75
+cup
+powdered sugar
+
+1.5
+tablespoon
+whipped cream
+
+3:
+
+0.75
+cup
+water
+
+1.0
+packet
+yeast
+
+1.0
+tablespoon
+granulated sugar
+
+2.0
+cup
+flour
+
+1.0
+tablespoon
+olive oil
+
+0.75
+teaspoon
+salt
+
+0.33
+cup
+tomato sauce
+
+1.0
+cup
+mozzarella cheese
+
+0.25
+cup
+parmesan cheese
+

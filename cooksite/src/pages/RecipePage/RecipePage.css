@@ -63,3 +63,43 @@
 .instructions-section p {
   font-size: 1rem;
 }
+.ingredients-section {
+  margin: 30px 0;
+  padding: 20px;
+  background: #2c2c2c;
+  border-radius: 8px;
+}
+
+.ingredients-section h2 {
+  color: #28a745;
+  font-size: 1.8rem;
+  margin-bottom: 15px;
+}
+
+.ingredients-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 15px;
+}
+
+.ingredient-item {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  padding: 10px;
+  background: #3a3a3a;
+  border-radius: 4px;
+}
+
+.amount {
+  font-weight: bold;
+  color: #28a745;
+}
+
+.measure {
+  font-style: italic;
+}
+
+.ingredient-name {
+  color: #fff;
+}

@@ -43,7 +43,6 @@ function BrowsingPage() {
 
   return (
     <div>
-      {/* Add Recipe button in the top right */}
       <div className="add-recipe-container">
         <Link to="/upload" className="add-recipe-button">
           Add a Recipe
@@ -62,7 +61,6 @@ function BrowsingPage() {
         <div className="grid-container">
           {filteredRecipes.map((recipe, index) => (
             <div key={index} className="grid-item">
-              {/* Recipe name link using React Router's Link */}
               <div className="text">
                 <Link
                   to={`/recipes/${getFileName(recipe.name)}`}
@@ -71,7 +69,6 @@ function BrowsingPage() {
                   {recipe.name}
                 </Link>
               </div>
-              {/* Image link using React Router's Link */}
               <div className="image">
                 <Link
                   to={`/recipes/${getFileName(recipe.name)}`}

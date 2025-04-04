@@ -45,20 +45,24 @@ def generate_insert_command(recipe_id, ingredient_name, measure_name, amount):
         print(f"Error: {e}")
 
 if __name__ == "__main__":
-    recipe_id = 5
-    count = int(input("Enter number of ingredients: "))
-    ingredient_name =[];
-    measure_name = [];
-    amount = [];
-    for x in range(count):
-        ingredient_name.append(input("Enter the ingredient name: "))
-        measure_name.append(input("Enter the measurement name: "))
-        while True:
-            try:
-                amount.append(float(input("Enter the amount: ")))
+    recipe_id = 4
+    ingredient_name = []
+    measure_name = []
+    amount = []
+    while True:
+        try:
+            value = float(input())
+            amount.append(value)
+            if value == 0:
                 break
-            except ValueError:
-                print("Invalid amount.")
-    print(" ")
-    for x in range(count):
-        generate_insert_command(recipe_id, ingredient_name[x], measure_name[x], amount[x])
+        except ValueError:
+            print()
+            continue
+
+        measure_name.append(input())
+        ingredient_name.append(input())
+        print()
+    print("\n\nO")
+    for i in range(len(amount) - 1):
+        generate_insert_command(recipe_id, ingredient_name[i], measure_name[i], amount[i])
+
