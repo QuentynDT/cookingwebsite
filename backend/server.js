@@ -39,6 +39,7 @@ app.get('/api/recipe/random', async (req, res) => {
       return res.status(404).json({ error: 'No recipes found' });
     }
 
+    
     res.json(rows);
   } catch (error) {
     console.error('Error fetching random recipe:', error);
@@ -118,42 +119,6 @@ app.get('/api/recipes/search', async (req, res) => {
     if (connection) connection.release();
   }
 });
-app.post('/api/recipes', async (req, res) => {
-  let connection;
-  try {
-    connection = await pool.getConnection();
-    const { name, description, instructions } = req.body;
-
-    // Validate input
-    if (!name || !description || !instructions) {
-      return res.status(400).json({ message: 'All fields are required' });
-    }
-
-    // Check if recipe already exists
-    const [existingRecipe] = await connection.execute(
-      'SELECT id FROM recipe WHERE LOWER(name) = LOWER(?)',
-      [name]
-    );
-    if (existingRecipe.length > 0) {
-      return res.status(400).json({ message: 'Recipe already exists' });
-    }
-
-    // Insert the new recipe into the database
-    await connection.execute(
-      `INSERT INTO recipe (name, description, instructions) 
-       VALUES (?, ?, ?)`,
-      [name, description, instructions]
-    );
-
-    res.status(201).json({ message: 'Recipe added successfully' });
-  } catch (error) {
-    console.error('Error adding recipe:', error);
-    res.status(500).json({ message: 'Failed to add recipe' });
-  } finally {
-    if (connection) connection.release();
-  }
-});
-
 app.get('/api/recipes', async (req, res) => {
   try {
     const connection = await connectDB();

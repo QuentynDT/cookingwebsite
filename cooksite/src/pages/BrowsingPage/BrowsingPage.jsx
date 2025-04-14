@@ -55,12 +55,6 @@ function BrowsingPage() {
 
   return (
     <div>
-      <div className="add-recipe-container">
-        <Link to="/upload" className="add-recipe-button">
-          Add a Recipe
-        </Link>
-      </div>
-
       <div className="search-bar">
         <input
           type="text"

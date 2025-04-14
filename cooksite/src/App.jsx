@@ -4,7 +4,6 @@ import HomePage from './pages/HomePage/HomePage';
 import BrowsingPage from './pages/BrowsingPage/BrowsingPage';
 import ReviewPage from './pages/ReviewPage/ReviewPage';
 import RecipePage from './pages/RecipePage/RecipePage';
-import UploadPage from './pages/UploadPage/UploadPage';
 
 function App() {
   return (
@@ -14,7 +13,6 @@ function App() {
         <Route path="/browse" element={<BrowsingPage />} />
         <Route path="/review" element={<ReviewPage />} />
         <Route path="/recipes/:recipeName" element={<RecipePage />} />
-        <Route path="/upload" element={<UploadPage />} />
       </Routes>
     </BrowserRouter>
   );
