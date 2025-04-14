@@ -127,3 +127,102 @@ mozzarella cheese
 cup
 parmesan cheese
 
+4:
+
+1.0
+cup
+flour
+
+1.25
+teaspoon
+baking powder
+
+0.125
+teaspoon
+salt
+
+2.0
+whole
+egg
+
+0.75
+cup
+granulated sugar
+
+0.25
+cup
+butter
+
+0.5
+cup
+milk
+
+2.0
+teaspoon
+vanilla extract
+
+1.5
+teaspoon
+vegetable oil
+
+5:
+
+1.0
+
+eggplant
+
+2.0
+
+garlic
+
+0.5
+tablespoon
+oregano
+
+1.0
+
+onion
+
+5.0
+
+rosemary
+
+3.0
+
+potato
+
+2.0
+
+shallot
+
+3.0
+
+squash
+
+5.0
+
+thyme
+
+3.0
+
+zucchini
+
+1.0
+tablespoon
+olive oil
+
+4.0
+tablespoon
+butter
+
+3.0
+cup
+heavy cream
+
+2
+cup
+parmesan cheese
+
+1
+teaspoon
+bread crumbs

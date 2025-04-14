@@ -45,7 +45,7 @@ def generate_insert_command(recipe_id, ingredient_name, measure_name, amount):
         print(f"Error: {e}")
 
 if __name__ == "__main__":
-    recipe_id = 4
+    recipe_id = 5
     ingredient_name = []
     measure_name = []
     amount = []
@@ -61,7 +61,6 @@ if __name__ == "__main__":
 
         measure_name.append(input())
         ingredient_name.append(input())
-        print()
     print("\n\nO")
     for i in range(len(amount) - 1):
         generate_insert_command(recipe_id, ingredient_name[i], measure_name[i], amount[i])

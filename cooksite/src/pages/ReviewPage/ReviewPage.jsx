@@ -25,9 +25,9 @@ function ReviewPage() {
           <span
             key={index}
             className={`star ${
-              index < rating // If clicked, make it golden
+              index < rating
                 ? 'golden'
-                : index < hoverRating // If hovered and not clicked, make it yellow
+                : index < hoverRating
                 ? 'yellow'
                 : ''
             }`}

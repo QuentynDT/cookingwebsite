@@ -9,7 +9,7 @@ const dbConfig = {
   host: 'localhost',
   user: 'root',
   password: 'quentyn',
-  database: 'recipe2DB'
+  database: 'recipeDB'
 };
 const pool = mysql.createPool({
   ...dbConfig,
@@ -27,6 +27,27 @@ async function connectDB() {
     throw error;
   }
 }
+app.get('/api/recipe/random', async (req, res) => {
+  let connection;
+  try {
+    connection = await pool.getConnection();
+    const [rows] = await connection.execute(
+      'SELECT name, description, instructions FROM recipe ORDER BY RAND() LIMIT 1'
+    );
+
+    if (rows.length === 0) {
+      return res.status(404).json({ error: 'No recipes found' });
+    }
+
+    res.json(rows);
+  } catch (error) {
+    console.error('Error fetching random recipe:', error);
+    res.status(500).json({ error: 'Failed to fetch random recipe' });
+  } finally {
+    if (connection) connection.release();
+  }
+});
+
 app.get('/api/recipe/details/:recipeName', async (req, res) => {
   let connection;
   try {
@@ -50,7 +71,7 @@ app.get('/api/recipe/details/:recipeName', async (req, res) => {
        JOIN recipeingredient ri ON r.id = ri.recipe_id
        JOIN ingredient i ON i.id = ri.ingredient_id
        JOIN measure m ON m.id = ri.measure_id
-       WHERE r.name = ?`,
+       WHERE r.name = ? ORDER BY i.name`,
       [recipeName]
     );
 
@@ -66,7 +87,72 @@ app.get('/api/recipe/details/:recipeName', async (req, res) => {
     if (connection) connection.release();
   }
 });
+app.get('/api/recipes/search', async (req, res) => {
+  let connection;
+  try {
+    connection = await pool.getConnection();
+    const searchQuery = req.query.query || '';
+    const [rows] = await connection.execute(
+      `
+      SELECT DISTINCT r.name 
+      FROM recipe r 
+      JOIN recipeingredient ri ON r.id = ri.recipe_id 
+      JOIN ingredient i ON i.id = ri.ingredient_id 
+      WHERE i.name LIKE ? 
+      
+      UNION 
+      
+      SELECT name 
+      FROM recipe 
+      WHERE name LIKE ? 
+      
+      ORDER BY name`,
+      [`%${searchQuery}%`, `%${searchQuery}%`]
+    );
 
+    res.json(rows);
+  } catch (error) {
+    console.error('Error fetching filtered recipes:', error);
+    res.status(500).json({ message: 'Failed to fetch filtered recipes' });
+  } finally {
+    if (connection) connection.release();
+  }
+});
+app.post('/api/recipes', async (req, res) => {
+  let connection;
+  try {
+    connection = await pool.getConnection();
+    const { name, description, instructions } = req.body;
+
+    // Validate input
+    if (!name || !description || !instructions) {
+      return res.status(400).json({ message: 'All fields are required' });
+    }
+
+    // Check if recipe already exists
+    const [existingRecipe] = await connection.execute(
+      'SELECT id FROM recipe WHERE LOWER(name) = LOWER(?)',
+      [name]
+    );
+    if (existingRecipe.length > 0) {
+      return res.status(400).json({ message: 'Recipe already exists' });
+    }
+
+    // Insert the new recipe into the database
+    await connection.execute(
+      `INSERT INTO recipe (name, description, instructions) 
+       VALUES (?, ?, ?)`,
+      [name, description, instructions]
+    );
+
+    res.status(201).json({ message: 'Recipe added successfully' });
+  } catch (error) {
+    console.error('Error adding recipe:', error);
+    res.status(500).json({ message: 'Failed to add recipe' });
+  } finally {
+    if (connection) connection.release();
+  }
+});
 
 app.get('/api/recipes', async (req, res) => {
   try {
