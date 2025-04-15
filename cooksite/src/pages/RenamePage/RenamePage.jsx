@@ -47,7 +47,7 @@ function RenamePage() {
 
   return (
     <div className="rename-page-container">
-      <h1 className="rename-title">Rename Ingredient</h1>
+      <h1 className="rename-title">Replace Ingredient</h1>
       <form onSubmit={handleSubmit} className="rename-form">
         <div className="form-group">
           <label htmlFor="oldName">Old Ingredient Name:</label>
