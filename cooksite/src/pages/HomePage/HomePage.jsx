@@ -33,15 +33,15 @@ const HomePage = () => {
 
     const handleRandomRecipeClick = async () => {
         try {
-            console.log('Random Recipe button clicked'); // Debug log
-            const response = await fetch('http://localhost:3001/api/recipe/random'); // Ensure correct URL
+            console.log('Random Recipe button clicked');
+            const response = await fetch('http://localhost:3001/api/recipe/random');
             const data = await response.json();
             
-            console.log('API Response:', data); // Debug log
+            console.log('API Response:', data);
 
             if (response.ok && data.length > 0) {
                 const recipeName = data[0].name;
-                console.log('Navigating to:', `/recipes/${getFileName(recipeName)}`); // Debug log
+                console.log('Navigating to:', `/recipes/${getFileName(recipeName)}`);
                 navigate(`/recipes/${getFileName(recipeName)}`);
             } else {
                 console.error('No recipe found or server error');

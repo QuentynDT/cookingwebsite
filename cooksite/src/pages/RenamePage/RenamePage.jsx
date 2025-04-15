@@ -36,8 +36,6 @@ function RenamePage() {
       setIsError(false);
       setOldName('');
       setNewName('');
-      
-      // Redirect after 2 seconds
       setTimeout(() => navigate('/'), 2000);
     } catch (error) {
       setMessage(error.message);
