@@ -55,13 +55,18 @@ function BrowsingPage() {
 
   return (
     <div>
-      <div className="search-bar">
-        <input
-          type="text"
-          placeholder="Search for recipes..."
-          value={searchTerm}
-          onChange={handleSearch}
-        />
+      <div className="top-bar">
+        <div className="search-bar">
+          <input
+            type="text"
+            placeholder="Search for recipes..."
+            value={searchTerm}
+            onChange={handleSearch}
+          />
+        </div>
+        <Link to="/rename-ingredient" className="rename-button">
+          Rename an Ingredient
+        </Link>
       </div>
       {filteredRecipes.length > 0 ? (
         <div className="grid-container">

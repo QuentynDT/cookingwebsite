@@ -27,6 +27,43 @@ async function connectDB() {
     throw error;
   }
 }
+// Add this route to your existing Express server
+app.post('/api/ingredients/rename', async (req, res) => {
+  let connection;
+  try {
+    const { oldName, newName } = req.body;
+    connection = await pool.getConnection();
+
+    // Check if old ingredient exists
+    const [existing] = await connection.execute(
+      'SELECT id FROM ingredient WHERE name = ?',
+      [oldName]
+    );
+
+    if (existing.length === 0) {
+      return res.status(404).json({ message: 'Ingredient not found' });
+    }
+
+    // Update ingredient name
+    await connection.execute(
+      'UPDATE ingredient SET name = ? WHERE name = ?',
+      [newName, oldName]
+    );
+
+    res.json({ message: 'Ingredient renamed successfully' });
+  } catch (error) {
+    console.error('Error renaming ingredient:', error);
+    
+    if (error.code === 'ER_DUP_ENTRY') {
+      return res.status(409).json({ message: 'New ingredient name already exists' });
+    }
+    
+    res.status(500).json({ message: 'Failed to rename ingredient' });
+  } finally {
+    if (connection) connection.release();
+  }
+});
+
 app.get('/api/recipe/random', async (req, res) => {
   let connection;
   try {
